@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Produk() {
+
+  const navigate = useNavigate();
 
   const [produk, setProduk] = useState([]);
   const [loading, setLoading] = useState(true);
