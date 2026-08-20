@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Produk() {
+
   const [produk, setProduk] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -45,6 +46,7 @@ const handleEdit = (id) => {
   navigate(`/produk/edit/${id}`);
 };
 
+
   if (loading) {
   return <div className="container mt-4">Sedang memuat data...</div>;
 }
@@ -70,6 +72,8 @@ return (
             <th>Judul</th>
             <th>Deskripsi</th>
             <th>Harga</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
 
@@ -81,6 +85,22 @@ return (
                 <td>{item.judul}</td>
                 <td>{item.deskripsi}</td>
                 <td>Rp {item.harga}</td>
+                <td>
+                  <button
+                  className="btn btn-warning btn-sm me-2"
+                  onClick={() => handleEdit(item.id_produk)}
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => handleDelete(item.id_produk)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))
           ) : (
